@@ -10,5 +10,8 @@ const router = Router();
 router.get(`/players`, playerController.getAllPlayers);
 router.post(`/createPlayer`, playerController.createPlayer);
 
+//login
+router.post(`/login`, playerController.login);
+
 
 module.exports = router;

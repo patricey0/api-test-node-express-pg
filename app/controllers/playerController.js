@@ -29,8 +29,8 @@ const playerController = {
             if (isPseudoExists.pseudo) throw new Error().message = `Ce pseudo est déjà utilisé.`;
             const user = await Player.create(req.body);
             console.log('controller create user : ', user);
-            // const token = jwt.makeToken(user.id);
-            // user["jwt"] = token;
+            const token = jwt.makeToken(user.id);
+            user["jwt"] = token;
             res.json(user);
         } catch (error) {
             console.log(error);
@@ -41,7 +41,7 @@ const playerController = {
     login: async (req, res) => {
         try {
             //console.log(req.body);
-            const user = await new User(req.body).login();
+            const user = await new Player(req.body).login();
             //console.log(user);
             const token = jwt.makeToken(user.id);
             //console.log(token);
@@ -53,22 +53,11 @@ const playerController = {
         }
     },
 
-    checkPwd: async (req, res) => {
-        try {
-            const user = await new User(req.body).checkPwd();
-            if (!user) { throw new Error ('Identification failed, password incorrect.')};
-            res.json(`Identification OK.`)
-        } catch (error) {
-            console.log(error);
-            res.status(500).json(error);
-        }
-    },
-
 
     deleteUser: async (req, res) => {
         try {
             //console.log(req.params.id);
-            await new User({id:+req.params.id}).delete();
+            await new Player({id:+req.params.id}).delete();
             res.json(`The user id : ${+req.params.id} has been deleted.`);
         } catch (error) {
             console.log(error);

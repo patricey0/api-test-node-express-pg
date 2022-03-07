@@ -66,7 +66,7 @@ class Player extends CoreModel {
     async delete() {
         try {
             console.log('data:', this.id)
-            const player = await CoreModel.getRow('DELETE FROM visitor WHERE id=$1', [this.id]);
+            const player = await CoreModel.getRow('DELETE FROM player WHERE id=$1', [this.id]);
             return player;
         } catch (error) {
             console.log(error);
@@ -79,8 +79,8 @@ class Player extends CoreModel {
 
     async login() {
         try {
-            const player = await CoreModel.getRow('SELECT * FROM "visitor" WHERE mail=$1', [this.mail]);
-            if (!player) { throw new Error ('Identification failed, login or password invalid.')};
+            const player = await CoreModel.getRow('SELECT * FROM "player" WHERE pseudo=$1', [this.pseudo]);
+            if (!player) { throw new Error ('Identification failed, pseudo or password invalid.')};
             const isPwdValid = await bcrypt.compare(this.password, player.password);
             if (!isPwdValid) { throw new Error ('Identification failed, login or password invalid.')} 
             return player;
@@ -92,22 +92,6 @@ class Player extends CoreModel {
             throw error;
         }
         
-    }
-
-    async checkPwd() {
-        try {
-            const player = await CoreModel.getRow('SELECT * FROM "visitor" WHERE id=$1', [this.id]);
-            if (!player) { throw new Error ('Identification failed, password incorrect.')};
-            const isPwdValid = await bcrypt.compare(this.password, player.password);
-            if (!isPwdValid) { throw new Error ('Identification failed, password incorrect.')} 
-            return isPwdValid;
-        } catch (error) {
-            console.log(error);
-            if (error.detail) {
-                throw new Error(error.detail);
-            }
-            throw error;
-        }
     }
 
 };
