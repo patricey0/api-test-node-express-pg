@@ -1,9 +1,13 @@
 const JWT = require('jsonwebtoken');
+//import config for secret
 const { jwt_secret } = require(`../config`)
 
 module.exports = {
+
+    //method to create a token with the player id
     makeToken: playerId => {
         try {
+            //directly return the token
             return JWT.sign(
                 {
                     data: playerId
@@ -20,8 +24,10 @@ module.exports = {
         }
     },
 
+    //token validation on verify
     validateToken: token => {
         try {
+
             return JWT.verify(
                 token,
                 jwt_secret,

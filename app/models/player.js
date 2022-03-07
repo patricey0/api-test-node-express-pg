@@ -65,7 +65,7 @@ class Player extends CoreModel {
 
     async delete() {
         try {
-            console.log('data:', this.id)
+            // console.log('data:', this.id)
             const player = await CoreModel.getRow('DELETE FROM player WHERE id=$1', [this.id]);
             return player;
         } catch (error) {

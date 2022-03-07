@@ -54,16 +54,26 @@ const playerController = {
     },
 
 
-    deleteUser: async (req, res) => {
+    deletePlayer: async (req, res) => {
         try {
             //console.log(req.params.id);
             await new Player({id:+req.params.id}).delete();
-            res.json(`The user id : ${+req.params.id} has been deleted.`);
+            res.json(`The player id : ${+req.params.id} has been deleted.`);
         } catch (error) {
             console.log(error);
             res.status(500).json(error);
         }
-    }
+    },
+
+    checkLogin: async (req, res) => {
+        try {
+            const player = await Player.findById({id:+req.params.id});
+            res.status(200).json(player);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json(error);
+        }
+    },
 }
 
 module.exports = playerController;

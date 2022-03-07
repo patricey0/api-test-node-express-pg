@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS player (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     pseudo TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
-    score INT
+    best_score INT
 );
 
 
