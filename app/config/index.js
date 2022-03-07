@@ -1,0 +1,19 @@
+const devConfig = require("./devEnv.js");
+// const prodConfig = require("./prod.js");
+
+const env = process.env.NODE_ENV;
+
+switch (env) {
+    case "development":
+    case "dev":
+        module.exports = devConfig;
+        break;
+
+    // case "production":
+    // case "prod":
+    //     module.exports = prodConfig;
+    //     break;
+
+    default:
+        module.exports = devConfig;
+}
