@@ -74,6 +74,16 @@ const playerController = {
             res.status(500).json(error);
         }
     },
+
+    scoreUpdate: async (req, res) => {
+        try {
+            const player = await new Player({id:+req.params.id, ...req.body}).scoreUpdate();
+            res.status(200).json(player);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
 }
 
 module.exports = playerController;

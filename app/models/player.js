@@ -82,7 +82,7 @@ class Player extends CoreModel {
             const player = await CoreModel.getRow('SELECT * FROM "player" WHERE pseudo=$1', [this.pseudo]);
             if (!player) { throw new Error ('Identification failed, pseudo or password invalid.')};
             const isPwdValid = await bcrypt.compare(this.password, player.password);
-            if (!isPwdValid) { throw new Error ('Identification failed, login or password invalid.')} 
+            if (!isPwdValid) { throw new Error ('Identification failed, pseudo or password invalid.')} 
             return player;
         } catch (error) {
             console.log(error);
@@ -92,6 +92,20 @@ class Player extends CoreModel {
             throw error;
         }
         
+    }
+
+    async scoreUpdate() {
+        try {
+            console.log(this);
+            const player = new Player(await CoreModel.getRow(`SELECT * FROM score_update($1)`, [this]));
+            return player
+        } catch (error) {
+            console.log(error);
+            if (error.detail) {
+                throw new Error(error.detail);
+            }
+            throw error;
+        }
     }
 
 };

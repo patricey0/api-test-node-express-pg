@@ -8,7 +8,7 @@ GET {{baseUrl}}/players HTTP/1.1
 
 
 ### Test create user
-POST {{baseUrl}}/createPlayer HTTP/1.1
+POST {{baseUrl}}/player/create HTTP/1.1
 content-type: application/json
 
 {
@@ -31,5 +31,13 @@ content-type: application/json
 
 
 ### Test validation token
-GET {{baseUrl}}/loginCheck/7 HTTP/1.1
-Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjo3LCJpYXQiOjE2NDY2NTE2ODgsImV4cCI6MTY0NjczODA4OH0.Hi6e3cuJR_K7X4RRoGRLDBVsWkB4uirMeNd9OdkmGaw"
+GET {{baseUrl}}/login/check/7 HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjo3LCJpYXQiOjE2NDY2NTE2ODgsImV4cCI6MTY0NjczODA4OH0.Hi6e3cuJR_K7X4RRoGRLDBVsWkB4uirMeNd9OdkmGaw
+
+### Test updating score
+POST {{baseUrl}}/player/3/score/update HTTP/1.1
+content-type: application/json
+
+{
+    "score" : 12
+}

@@ -11,12 +11,13 @@ const { jwt } = require(`./middlewares`);
 //player routes
 router.get(`/players`, playerController.getAllPlayers);
 router.get(`/player/:id`, playerController.getOnePlayer);
-router.post(`/createPlayer`, playerController.createPlayer);
+router.post(`/player/create`, playerController.createPlayer);
 router.delete(`/player/:id`, playerController.deletePlayer);
+router.post(`/player/:id/score/update`, playerController.scoreUpdate);
 
 //login
 router.post(`/login`, playerController.login);
-router.get(`/loginCheck/:id`,jwt, playerController.checkLogin);
+router.get(`/login/check/:id`,jwt, playerController.checkLogin);
 
 
 module.exports = router;
