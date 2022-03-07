@@ -16,7 +16,7 @@ router.delete(`/player/:id`, playerController.deletePlayer);
 
 //login
 router.post(`/login`, playerController.login);
-router.get(`/loginCheck/:id`, playerController.checkLogin);
+router.get(`/loginCheck/:id`,jwt, playerController.checkLogin);
 
 
 module.exports = router;
