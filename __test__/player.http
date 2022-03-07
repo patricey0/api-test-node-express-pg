@@ -12,7 +12,7 @@ POST {{baseUrl}}/createPlayer HTTP/1.1
 content-type: application/json
 
 {
-    "pseudo": "Vincent",
+    "pseudo": "patricey0",
     "password": "123qwe"
 }
 
@@ -28,3 +28,8 @@ content-type: application/json
 ### Test delete user
 DELETE {{baseUrl}}/player/2 HTTP/1.1
 content-type: application/json
+
+
+### Test validation token
+GET {{baseUrl}}/loginCheck/7 HTTP/1.1
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjo3LCJpYXQiOjE2NDY2NTE2ODgsImV4cCI6MTY0NjczODA4OH0.Hi6e3cuJR_K7X4RRoGRLDBVsWkB4uirMeNd9OdkmGaw"
