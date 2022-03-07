@@ -1,0 +1,7 @@
+@protocol=http://
+@host=localhost
+@port=:5000
+@baseUrl={{protocol}}{{host}}{{port}}
+
+### Test get users
+GET {{baseUrl}}/scoreboard HTTP/1.1

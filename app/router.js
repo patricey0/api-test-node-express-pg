@@ -1,7 +1,7 @@
 //import router from express
 const { Router } = require(`express`);
 //import controllers
-const { playerController } = require('./controllers');
+const { playerController, scoreboardController } = require('./controllers');
 //router init
 const router = Router();
 //import jwt middleware to validate token
@@ -18,6 +18,9 @@ router.post(`/player/:id/score/update`, playerController.scoreUpdate);
 //login
 router.post(`/login`, playerController.login);
 router.get(`/login/check/:id`,jwt, playerController.checkLogin);
+
+//scoreboard
+router.get(`/scoreboard`, scoreboardController.getScoreboard);
 
 
 module.exports = router;
