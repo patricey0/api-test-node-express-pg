@@ -1,0 +1,7 @@
+@protocol=http://
+@host=localhost
+@port=:5000
+@baseUrl={{protocol}}{{host}}{{port}}
+
+### Test get communes
+GET {{baseUrl}}/communes HTTP/1.1

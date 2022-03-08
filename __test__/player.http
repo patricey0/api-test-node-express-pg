@@ -35,9 +35,9 @@ GET {{baseUrl}}/login/check/7 HTTP/1.1
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjo3LCJpYXQiOjE2NDY2NTE2ODgsImV4cCI6MTY0NjczODA4OH0.Hi6e3cuJR_K7X4RRoGRLDBVsWkB4uirMeNd9OdkmGaw
 
 ### Test updating score
-POST {{baseUrl}}/player/3/score/update HTTP/1.1
+POST {{baseUrl}}/player/7/score/update HTTP/1.1
 content-type: application/json
 
 {
-    "score" : 12
+    "score" : 15
 }

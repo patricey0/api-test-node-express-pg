@@ -1,7 +1,7 @@
 //import router from express
 const { Router } = require(`express`);
 //import controllers
-const { playerController, scoreboardController } = require('./controllers');
+const { playerController, scoreboardController, gameController } = require('./controllers');
 //router init
 const router = Router();
 //import jwt middleware to validate token
@@ -21,6 +21,9 @@ router.get(`/login/check/:id`,jwt, playerController.checkLogin);
 
 //scoreboard
 router.get(`/scoreboard`, scoreboardController.getScoreboard);
+
+//game
+router.get(`/communes`, gameController.getRandomCommunes);
 
 
 module.exports = router;

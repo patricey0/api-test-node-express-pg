@@ -7,8 +7,10 @@ const sanitize = obj => {
     }
 }
 
-const cleaner = (request, response, next) => {
+const cleaner = (request, _, next) => {
+    //sanitize params from request
     sanitize(request.params);
+    //sanitize query from request
     sanitize(request.query);
     if (request.body) {
         sanitize(request.body);
