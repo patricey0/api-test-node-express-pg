@@ -31,6 +31,7 @@ class Player extends CoreModel {
         
     }
 
+    //method to get one player by his pseudo
     static async findByPseudo(pseudo) {
         try {
             return new Player(await CoreModel.getRow('SELECT * FROM "player" WHERE pseudo=$1', [pseudo]));
@@ -44,6 +45,8 @@ class Player extends CoreModel {
         
     }
 
+    //method to create player in DB
+    //TODO: check for other module to harder encrypt password
     static async create(data) {
         try {
             const password = await bcrypt.hash(data.password, 10);
@@ -62,7 +65,7 @@ class Player extends CoreModel {
         
     }
 
-
+    // method to delete player from DB
     async delete() {
         try {
             // console.log('data:', this.id)
@@ -77,6 +80,7 @@ class Player extends CoreModel {
         }
     }
 
+    //login method
     async login() {
         try {
             const player = await CoreModel.getRow('SELECT * FROM "player" WHERE pseudo=$1', [this.pseudo]);
@@ -94,6 +98,7 @@ class Player extends CoreModel {
         
     }
 
+    //method to update player best score
     async scoreUpdate() {
         try {
             console.log(this);

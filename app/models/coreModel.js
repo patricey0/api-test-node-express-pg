@@ -8,6 +8,7 @@ class CoreModel {
         }
     }
 
+    //returning an array with all rows matching args
     static async getArray(...args) {
         try {
             return (await db.query(...args)).rows;
@@ -16,6 +17,7 @@ class CoreModel {
         }
     }
 
+    //returning one row matching args
     static async getRow(...args) {
         try {
             return (await this.getArray(...args))[0];
